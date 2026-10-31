@@ -3,7 +3,6 @@ import { h, Component } from 'preact';
 import { linkRef } from 'shared/prerendered-app/util';
 import '../../custom-els/loading-spinner';
 import logo from 'url:./imgs/logo.svg';
-import githubLogo from 'url:./imgs/github-logo.svg';
 import largePhoto from 'url:./imgs/demos/demo-large-photo.jpg';
 import artwork from 'url:./imgs/demos/demo-artwork.jpg';
 import deviceScreen from 'url:./imgs/demos/demo-device-screen.png';
@@ -14,7 +13,6 @@ import smallSectionAsset from 'url:./imgs/info-content/small.svg';
 import simpleSectionAsset from 'url:./imgs/info-content/simple.svg';
 import secureSectionAsset from 'url:./imgs/info-content/secure.svg';
 import logoIcon from 'url:./imgs/demos/icon-demo-logo.png';
-import logoWithText from 'data-url-text:./imgs/logo-with-text.svg';
 import * as style from './style.css';
 import type SnackBarElement from 'shared/custom-els/snack-bar';
 import 'shared/custom-els/snack-bar';
@@ -24,29 +22,29 @@ import SlideOnScroll from './SlideOnScroll';
 const demos = [
   {
     description: 'Large photo',
-    size: '2.8MB',
+    size: '1.6MB',
     filename: 'photo.jpg',
     url: largePhoto,
     iconUrl: largePhotoIcon,
   },
   {
     description: 'Artwork',
-    size: '2.9MB',
+    size: '293KB',
     filename: 'art.jpg',
     url: artwork,
     iconUrl: artworkIcon,
   },
   {
     description: 'Device screen',
-    size: '1.6MB',
-    filename: 'pixel3.png',
+    size: '185KB',
+    filename: 'screen.png',
     url: deviceScreen,
     iconUrl: deviceScreenIcon,
   },
   {
     description: 'SVG icon',
-    size: '13KB',
-    filename: 'squoosh.svg',
+    size: '7KB',
+    filename: 'solvey.svg',
     url: logo,
     iconUrl: logoIcon,
   },
@@ -56,7 +54,6 @@ const blobAnimImport =
   !__PRERENDER__ && matchMedia('(prefers-reduced-motion: reduce)').matches
     ? undefined
     : import('./blob-anim');
-const installButtonSource = 'introInstallButton-Purple';
 const supportsClipboardAPI =
   !__PRERENDER__ && navigator.clipboard && navigator.clipboard.read;
 
@@ -85,16 +82,15 @@ export default class Intro extends Component<Props, State> {
   };
   private fileInput?: HTMLInputElement;
   private blobCanvas?: HTMLCanvasElement;
-  private installingViaButton = false;
 
   componentDidMount() {
-    // Listen for beforeinstallprompt events, indicating Squoosh is installable.
+    // Listen for beforeinstallprompt events, indicating the app is installable.
     window.addEventListener(
       'beforeinstallprompt',
       this.onBeforeInstallPromptEvent,
     );
 
-    // Listen for the appinstalled event, indicating Squoosh has been installed.
+    // Listen for the appinstalled event, indicating the app has been installed.
     window.addEventListener('appinstalled', this.onAppInstalled);
 
     if (blobAnimImport) {
@@ -148,14 +144,6 @@ export default class Intro extends Component<Props, State> {
 
     // Save the beforeinstallprompt event so it can be called later.
     this.setState({ beforeInstallEvent: event });
-
-    // Log the event.
-    const gaEventInfo = {
-      eventCategory: 'pwa-install',
-      eventAction: 'promo-shown',
-      nonInteraction: true,
-    };
-    ga('send', 'event', gaEventInfo);
   };
 
   private onInstallClick = async (event: Event) => {
@@ -164,41 +152,17 @@ export default class Intro extends Component<Props, State> {
     // If there's no deferred prompt, bail.
     if (!beforeInstallEvent) return;
 
-    this.installingViaButton = true;
 
     // Show the browser install prompt
     beforeInstallEvent.prompt();
 
     // Wait for the user to accept or dismiss the install prompt
-    const { outcome } = await beforeInstallEvent.userChoice;
-    // Send the analytics data
-    const gaEventInfo = {
-      eventCategory: 'pwa-install',
-      eventAction: 'promo-clicked',
-      eventLabel: installButtonSource,
-      eventValue: outcome === 'accepted' ? 1 : 0,
-    };
-    ga('send', 'event', gaEventInfo);
-
-    // If the prompt was dismissed, we aren't going to install via the button.
-    if (outcome === 'dismissed') {
-      this.installingViaButton = false;
-    }
+    await beforeInstallEvent.userChoice;
   };
 
   private onAppInstalled = () => {
     // We don't need the install button, if it's shown
     this.setState({ beforeInstallEvent: undefined });
-
-    // Don't log analytics if page is not visible
-    if (document.hidden) return;
-
-    // Try to get the install, if it's not set, use 'browser'
-    const source = this.installingViaButton ? installButtonSource : 'browser';
-    ga('send', 'event', 'pwa-install', 'installed', source);
-
-    // Clear the install method property
-    this.installingViaButton = false;
   };
 
   private onPasteClick = async () => {
@@ -243,11 +207,12 @@ export default class Intro extends Component<Props, State> {
           <h1 class={style.logoContainer}>
             <img
               class={style.logo}
-              src={logoWithText}
-              alt="Squoosh"
-              width="539"
-              height="162"
+              src={logo}
+              alt=""
+              width="64"
+              height="64"
             />
+            <span class={style.logoText}>Solvey Image Compressor</span>
           </h1>
           <div class={style.loadImg}>
             {showBlobSVG && (
@@ -357,7 +322,7 @@ export default class Intro extends Component<Props, State> {
                 <div class={style.infoTextWrapper}>
                   <h2 class={style.infoTitle}>Small</h2>
                   <p class={style.infoCaption}>
-                    Smaller images mean faster load times. Squoosh can reduce
+                    Smaller images mean faster load times. It can reduce
                     file size and maintain high quality.
                   </p>
                 </div>
@@ -408,8 +373,8 @@ export default class Intro extends Component<Props, State> {
                 <div class={style.infoTextWrapper}>
                   <h2 class={style.infoTitle}>Secure</h2>
                   <p class={style.infoCaption}>
-                    Worried about privacy? Images never leave your device since
-                    Squoosh does all the work locally.
+                    Worried about privacy? Images never leave your device,
+                    because all the work happens locally.
                   </p>
                 </div>
                 <div class={style.infoImgWrapper}>
@@ -436,18 +401,15 @@ export default class Intro extends Component<Props, State> {
             </svg>
             <div class={style.footerPadding}>
               <footer class={style.footerItems}>
-                <a
-                  class={style.footerLink}
-                  href="https://github.com/GoogleChromeLabs/squoosh/blob/dev/README.md#privacy"
-                >
-                  Privacy
+                <a class={style.footerLinkWithLogo} href="https://solvey.in">
+                  <img src={logo} alt="" width="10" height="10" />
+                  Solvey
                 </a>
                 <a
-                  class={style.footerLinkWithLogo}
-                  href="https://github.com/GoogleChromeLabs/squoosh"
+                  class={style.footerLink}
+                  href={`${__BASE__}/THIRD_PARTY_NOTICES.md`}
                 >
-                  <img src={githubLogo} alt="" width="10" height="10" />
-                  Source on Github
+                  Licences
                 </a>
               </footer>
             </div>

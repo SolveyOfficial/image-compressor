@@ -27,14 +27,13 @@ interface Props {}
 const Index: FunctionalComponent<Props> = () => (
   <html lang="en">
     <head>
-      <title>Squoosh</title>
+      <meta charSet="utf-8" />
+      <title>Solvey Image Compressor</title>
       <meta
         name="description"
-        content="Squoosh is the ultimate image optimizer that allows you to compress and compare images with different codecs in your browser."
+        content="Compress and resize photos and images right in your browser. Nothing is uploaded: everything happens on your device."
       />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@SquooshApp" />
-      <meta property="og:title" content="Squoosh" />
+      <meta property="og:title" content="Solvey Image Compressor" />
       <meta property="og:type" content="website" />
       <meta property="og:image" content={`${siteOrigin}${ogImage}`} />
       <meta
@@ -46,11 +45,11 @@ const Index: FunctionalComponent<Props> = () => (
       <meta property="og:image:height" content="500" />
       <meta
         property="og:image:alt"
-        content="A cartoon of a hand squeezing an image file on a dark background."
+        content="The Solvey logo on a black background."
       />
       <meta
         name="og:description"
-        content="Squoosh is the ultimate image optimizer that allows you to compress and compare images with different codecs in your browser."
+        content="Compress and resize photos and images right in your browser. Nothing is uploaded: everything happens on your device."
       />
       <meta
         name="viewport"
@@ -60,9 +59,9 @@ const Index: FunctionalComponent<Props> = () => (
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <link rel="shortcut icon" href={favicon} />
       <link rel="apple-touch-icon" href={ogImage} />
-      <meta name="theme-color" content="#ff3385" />
-      <link rel="manifest" href="/manifest.json" />
-      <link rel="canonical" href={siteOrigin} />
+      <meta name="theme-color" content="#000000" />
+      <link rel="manifest" href={`${__BASE__}/manifest.json`} />
+      <link rel="canonical" href={`${siteOrigin}${__BASE__}/`} />
       <style
         dangerouslySetInnerHTML={{ __html: escapeStyleScriptContent(baseCss) }}
       />
@@ -92,7 +91,7 @@ const Index: FunctionalComponent<Props> = () => (
                 Initialization error: This site requires JavaScript, which is
                 disabled in your browser.
               </div>
-              <a class={snackbarStyle.button} href="/">
+              <a class={snackbarStyle.button} href={`${__BASE__}/`}>
                 reload
               </a>
             </div>

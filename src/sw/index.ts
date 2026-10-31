@@ -54,13 +54,13 @@ self.addEventListener('fetch', (event) => {
   // Don't care about other-origin URLs
   if (url.origin !== location.origin) return;
 
-  if (url.pathname === '/editor') {
-    event.respondWith(Response.redirect('/'));
+  if (url.pathname === `${__BASE__}/editor`) {
+    event.respondWith(Response.redirect(`${__BASE__}/`));
     return;
   }
 
   if (
-    url.pathname === '/' &&
+    url.pathname === `${__BASE__}/` &&
     url.searchParams.has('share-target') &&
     event.request.method === 'POST'
   ) {

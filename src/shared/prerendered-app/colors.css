@@ -1,13 +1,16 @@
 html {
-  --pink: #ff3385;
-  --hot-pink: #ff0066;
+  /* Solvey palette */
+  --pink: #da66ff;
+  --hot-pink: #5b1f9e;
   --white: #fff;
   --black: #000;
   --off-black: #1d1d1d;
-  --blue: #5fb4e4;
-  --dim-blue: #0a7bcc;
-  --deep-blue: #09f;
-  --light-blue: #76c8ff;
+  --blue: #c5b9f9;
+  --dim-blue: #5b47d6;
+  --deep-blue: #09090b;
+  --light-blue: #1c1c22;
+  --lavender: #c5b9f9;
+  --hot-lavender: #a99bf0;
   --less-light-gray: #bcbcbc;
   --medium-light-gray: #d1d1d1;
   --light-gray: #eaeaea;
@@ -16,16 +19,5 @@ html {
   --dark-text: #142630;
 
   /* Old stuff: */
-  --button-fg: rgb(95, 180, 228);
-}
-
-@media (dynamic-range: high) {
-  @supports (color: oklch(0% 0 0)) {
-    html {
-      --pink: oklch(75% 0.3 3);
-      --hot-pink: oklch(65% 0.3 3);
-      --blue: oklch(75% 0.3 248);
-      --deep-blue: oklch(65% 0.3 248);
-    }
-  }
+  --button-fg: #c5b9f9;
 }

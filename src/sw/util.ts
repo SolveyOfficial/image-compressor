@@ -47,7 +47,7 @@ export function serveShareTarget(event: FetchEvent): void {
   const dataPromise = event.request.formData();
 
   // Redirect so the user can refresh the page without resending data.
-  event.respondWith(Response.redirect('/?share-target'));
+  event.respondWith(Response.redirect(`${__BASE__}/?share-target`));
 
   event.waitUntil(
     (async function () {

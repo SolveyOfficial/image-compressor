@@ -58,7 +58,7 @@ export default class App extends Component<Props, State> {
       if (!this.state.awaitingShareTarget) return;
       const file = await getSharedImage();
       // Remove the ?share-target from the URL
-      history.replaceState('', '', '/');
+      history.replaceState('', '', `${__BASE__}/`);
       this.openEditor();
       this.setState({ file, awaitingShareTarget: false });
     });

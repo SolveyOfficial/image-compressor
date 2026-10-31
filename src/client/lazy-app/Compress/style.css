@@ -43,7 +43,7 @@
 .options-1-theme {
   --main-theme-color: var(--pink);
   --hot-theme-color: var(--hot-pink);
-  --header-text-color: var(--white);
+  --header-text-color: var(--black);
   --scroller-radius: var(--options-radius) var(--options-radius) 0 0;
   --rotate-copyoverbutton-angle: 90deg; /* To point down */
 
@@ -54,9 +54,9 @@
 }
 
 .options-2-theme {
-  --main-theme-color: var(--blue);
-  --hot-theme-color: var(--deep-blue);
-  --header-text-color: var(--dark-text);
+  --main-theme-color: var(--lavender);
+  --hot-theme-color: var(--hot-lavender);
+  --header-text-color: var(--black);
   --scroller-radius: var(--options-radius) var(--options-radius) 0 0;
   --rotate-copyoverbutton-angle: -90deg; /* To point up */
 

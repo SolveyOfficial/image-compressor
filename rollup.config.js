@@ -27,12 +27,14 @@ import cssPlugin from './lib/css-plugin';
 import urlPlugin from './lib/url-plugin';
 import resolveDirsPlugin from './lib/resolve-dirs-plugin';
 import runScript from './lib/run-script';
-import emitFiles from './lib/emit-files-plugin';
 import featurePlugin from './lib/feature-plugin';
 import initialCssPlugin from './lib/initial-css-plugin';
 import serviceWorkerPlugin from './lib/sw-plugin';
 import dataURLPlugin from './lib/data-url-plugin';
-import entryDataPlugin, { fileNameToURL } from './lib/entry-data-plugin';
+import entryDataPlugin, {
+  basePath,
+  fileNameToURL,
+} from './lib/entry-data-plugin';
 import dedent from 'dedent';
 
 function resolveFileUrl({ fileName }) {
@@ -127,7 +129,11 @@ export default async function ({ watch }) {
             ...commonPlugins(),
             commonjs(),
             resolve(),
-            replace({ __PRERENDER__: false, __PRODUCTION__: isProduction }),
+            replace({
+              __BASE__: JSON.stringify(basePath),
+              __PRERENDER__: false,
+              __PRODUCTION__: isProduction,
+            }),
             entryDataPlugin(),
             isProduction ? terser({ module: true }) : {},
           ],
@@ -145,10 +151,13 @@ export default async function ({ watch }) {
         resolveFileUrl,
       ),
       ...commonPlugins(),
-      emitFiles({ include: '**/*', root: path.join(__dirname, 'src', 'copy') }),
       nodeExternalPlugin(),
       featurePlugin(),
-      replace({ __PRERENDER__: true, __PRODUCTION__: isProduction }),
+      replace({
+        __BASE__: JSON.stringify(basePath),
+        __PRERENDER__: true,
+        __PRODUCTION__: isProduction,
+      }),
       initialCssPlugin(),
       runScript(dir + '/static-build/index.js'),
     ],

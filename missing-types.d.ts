@@ -54,9 +54,6 @@ declare module 'service-worker:*' {
   export default url;
 }
 
-declare var ga: {
-  (...args: any[]): void;
-  q: any[];
-};
-
 declare const __PRODUCTION__: boolean;
+/** Path the site is served under, without a trailing slash (empty for the root). */
+declare const __BASE__: string;
