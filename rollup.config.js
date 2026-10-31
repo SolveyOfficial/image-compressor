@@ -12,7 +12,6 @@
  */
 import * as path from 'path';
 import { promises as fsp } from 'fs';
-import del from 'del';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
@@ -71,7 +70,7 @@ export default async function ({ watch }) {
     'utf-8',
   );
 
-  await del('.tmp/build');
+  await fsp.rm('.tmp/build', { recursive: true, force: true });
 
   const isProduction = !watch;
 
