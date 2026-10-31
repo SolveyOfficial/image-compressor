@@ -4,7 +4,7 @@ import * as style from './style.css';
 import 'add-css:./style.css';
 import { cleanSet, cleanMerge } from '../../util/clean-modify';
 
-import type { SourceImage, OutputType } from '..';
+import type { SourceImage, OutputType, FormPresetId } from '..';
 import {
   EncoderOptions,
   EncoderState,
@@ -31,6 +31,7 @@ interface Props {
   onCopyToOtherSideClick(index: 0 | 1): void;
   onSaveSideSettingsClick(index: 0 | 1): void;
   onImportSideSettingsClick(index: 0 | 1): void;
+  onFormPresetClick(index: 0 | 1, presetId: FormPresetId): void;
 }
 
 interface State {
@@ -163,6 +164,28 @@ export default class Options extends Component<Props, State> {
           (encoderState ? '' : style.originalImage)
         }
       >
+        <h3 class={style.optionsTitle}>Form presets</h3>
+        <section class={style.presetRow}>
+          <button
+            class={style.presetButton}
+            onClick={() =>
+              this.props.onFormPresetClick(this.props.index, 'photo')
+            }
+          >
+            Photo
+            <span class={style.presetHint}>200×230 px, under 50 KB</span>
+          </button>
+          <button
+            class={style.presetButton}
+            onClick={() =>
+              this.props.onFormPresetClick(this.props.index, 'signature')
+            }
+          >
+            Signature
+            <span class={style.presetHint}>140×60 px, under 20 KB</span>
+          </button>
+        </section>
+
         <Expander>
           {!encoderState ? null : (
             <div>

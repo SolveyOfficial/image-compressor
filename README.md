@@ -15,6 +15,9 @@ also works offline.
 
 ## Features
 
+- One-click form presets: passport-style photo (200×230 px, under 50 KB) and
+  signature (140×60 px, under 20 KB), the sizes many Indian exam and
+  government forms ask for. The preset picks the highest quality that fits.
 - Formats: MozJPEG, WebP, AVIF, JPEG XL, OxiPNG, QOI and WebP 2
 - Resize, with several resampling methods
 - Reduce the colour palette for smaller PNGs

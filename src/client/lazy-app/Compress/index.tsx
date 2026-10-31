@@ -35,6 +35,39 @@ import { drawableToImageData } from '../util/canvas';
 
 export type OutputType = EncoderType | 'identity';
 
+/** One-click settings for the photo and signature limits of online forms. */
+export type FormPresetId = 'photo' | 'signature';
+
+const formPresets: Record<
+  FormPresetId,
+  {
+    label: string;
+    width: number;
+    height: number;
+    minBytes: number;
+    maxBytes: number;
+    crop: boolean;
+  }
+> = {
+  // Common Indian exam and government form sizes, e.g. IBPS and SBI
+  photo: {
+    label: 'Photo',
+    width: 200,
+    height: 230,
+    minBytes: 20_000,
+    maxBytes: 50_000,
+    crop: true,
+  },
+  signature: {
+    label: 'Signature',
+    width: 140,
+    height: 60,
+    minBytes: 10_000,
+    maxBytes: 20_000,
+    crop: false,
+  },
+};
+
 export interface SourceImage {
   file: File;
   decoded: ImageData;
@@ -324,6 +357,8 @@ export default class Compress extends Component<Props, State> {
   private mainAbortController = new AbortController();
   // And again one for each side
   private sideAbortControllers = [new AbortController(), new AbortController()];
+  /** Separate worker for form presets, so their trial encodes don't block the preview */
+  private readonly presetWorkerBridge = new WorkerBridge();
   /** For debouncing calls to updateImage for each side. */
   private updateImageTimeout?: number;
 
@@ -379,6 +414,117 @@ export default class Compress extends Component<Props, State> {
         options,
       ),
     });
+  };
+
+  /**
+   * Resizes the image to the form's dimensions, then finds the highest JPEG
+   * quality that keeps the file under the form's size limit.
+   */
+  private onFormPresetClick = async (index: 0 | 1, presetId: FormPresetId) => {
+    const { source } = this.state;
+    if (!source) return;
+    const preset = formPresets[presetId];
+    const input = source.preprocessed;
+
+    let width = preset.width;
+    let height = preset.height;
+    if (!preset.crop) {
+      // Fit inside the box without cropping, so nothing gets cut off
+      const scale = Math.min(width / input.width, height / input.height);
+      width = Math.max(1, Math.round(input.width * scale));
+      height = Math.max(1, Math.round(input.height * scale));
+    }
+
+    const currentProcessorState =
+      this.state.sides[index].latestSettings.processorState;
+    const processorState: ProcessorState = {
+      ...currentProcessorState,
+      resize: {
+        ...currentProcessorState.resize,
+        enabled: true,
+        width,
+        height,
+        fitMethod: preset.crop ? 'contain' : 'stretch',
+        ...(source.vectorImage
+          ? { method: 'vector' }
+          : { method: 'lanczos3', premultiply: true, linearRGB: true }),
+      } as ProcessorState['resize'],
+      quantize: { ...currentProcessorState.quantize, enabled: false },
+    };
+
+    this.props.showSnack(`Finding the best quality for the ${preset.label}…`, {
+      timeout: 2000,
+    });
+
+    try {
+      const signal = new AbortController().signal;
+      const bridge = this.presetWorkerBridge;
+      const processed = await processImage(
+        signal,
+        source,
+        processorState,
+        bridge,
+      );
+      const encoderStateFor = (quality: number): EncoderState => ({
+        type: 'mozJPEG',
+        options: {
+          ...encoderMap.mozJPEG.meta.defaultOptions,
+          quality,
+          // Keep full colour detail; forms reject files that are too small
+          auto_subsample: false,
+          chroma_subsample: 1,
+        },
+      });
+
+      // Binary search for the highest quality that fits the size limit
+      let low = 5;
+      let high = 100;
+      let best = low;
+      let bestSize = Infinity;
+      while (low <= high) {
+        const quality = Math.floor((low + high) / 2);
+        const file = await compressImage(
+          signal,
+          processed,
+          encoderStateFor(quality),
+          source.file.name,
+          bridge,
+        );
+        if (file.size <= preset.maxBytes) {
+          best = quality;
+          bestSize = file.size;
+          low = quality + 1;
+        } else {
+          high = quality - 1;
+        }
+      }
+
+      let sides = cleanSet(
+        this.state.sides,
+        `${index}.latestSettings.processorState`,
+        processorState,
+      );
+      sides = cleanSet(
+        sides,
+        `${index}.latestSettings.encoderState`,
+        encoderStateFor(best),
+      );
+      this.setState({ sides });
+
+      const minKB = preset.minBytes / 1000;
+      const maxKB = preset.maxBytes / 1000;
+      const sizeKB = (bestSize / 1000).toFixed(1);
+      let message = `${preset.label}: ${width}×${height} px, ${sizeKB} KB (forms often allow ${minKB}–${maxKB} KB)`;
+      if (bestSize === Infinity) {
+        message = `${preset.label}: could not get under ${maxKB} KB, set to the lowest quality`;
+      } else if (bestSize < preset.minBytes) {
+        message = `${preset.label}: ${width}×${height} px, ${sizeKB} KB at the highest quality. Some forms need at least ${minKB} KB; check your form's rules.`;
+      }
+      this.props.showSnack(message, { timeout: 6000 });
+    } catch (err) {
+      console.error(err);
+      this.props.showSnack(`Could not apply the ${preset.label} preset`);
+    }
   };
 
   componentWillReceiveProps(nextProps: Props): void {
@@ -938,6 +1084,7 @@ export default class Compress extends Component<Props, State> {
         onCopyToOtherSideClick={this.onCopyToOtherClick}
         onSaveSideSettingsClick={this.onSaveSideSettingsClick}
         onImportSideSettingsClick={this.onImportSideSettingsClick}
+        onFormPresetClick={this.onFormPresetClick}
       />
     ));
 

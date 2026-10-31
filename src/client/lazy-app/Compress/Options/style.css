@@ -156,3 +156,36 @@
     opacity: 0.5;
   }
 }
+
+.preset-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 10px var(--horizontal-padding);
+}
+
+.preset-button {
+  composes: unbutton from global;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--main-theme-color);
+  color: var(--black);
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--black);
+  }
+}
+
+.preset-hint {
+  font-weight: normal;
+  font-size: 1rem;
+}
