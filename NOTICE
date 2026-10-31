@@ -1,0 +1,8 @@
+Solvey Image Compressor
+Copyright 2026 Solvey
+
+This product is a modified version of Squoosh, Copyright 2020 Google LLC,
+licensed under the Apache License, Version 2.0. Solvey changed the files in
+this repository in 2026: removed analytics, updated the build tooling, added
+support for serving the app under a sub-path, and changed the branding, demo
+images, colours and fonts.

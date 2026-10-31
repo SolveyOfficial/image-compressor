@@ -1,38 +1,52 @@
-# [Squoosh]!
+# Solvey Image Compressor
 
-[Squoosh] is an image compression web app that reduces image sizes through numerous formats.
+Live demo: https://solveyofficial.github.io/image-compressor/
 
-# Privacy
+Make photos and images smaller, right in your browser. Open an image, compare
+the original and the compressed version side by side, adjust the settings and
+download the result. Useful for websites, email, and online forms that limit
+photo and signature file sizes.
 
-Squoosh does not send your image to a server. All image compression processes locally.
+## Private by design
 
-However, Squoosh utilizes Google Analytics to collect the following:
+Everything runs on your device. Images are never uploaded, the app has no
+analytics or tracking, and it loads no third-party resources. Once loaded, it
+also works offline.
 
-- [Basic visitor data](https://support.google.com/analytics/answer/6004245?ref_topic=2919631).
-- The before and after image size value.
-- If Squoosh PWA, the type of Squoosh installation.
-- If Squoosh PWA, the installation time and date.
+## Features
 
-# Developing
+- Formats: MozJPEG, WebP, AVIF, JPEG XL, OxiPNG, QOI and WebP 2
+- Resize, with several resampling methods
+- Reduce the colour palette for smaller PNGs
+- Side-by-side comparison with zoom
+- Paste from the clipboard, or drag and drop
 
-To develop for Squoosh:
+## Development
 
-1. Clone the repository
-1. To install node packages, run:
-   ```sh
-   npm install
-   ```
-1. Then build the app by running:
-   ```sh
-   npm run build
-   ```
-1. After building, start the development server by running:
-   ```sh
-   npm run dev
-   ```
+You need Node.js 22.
 
-# Contributing
+```sh
+npm ci          # install dependencies
+npm run dev     # development server at http://localhost:5000
+npm run lint    # check formatting
+npm run build   # production build in build/
+```
 
-Squoosh is an open-source project that appreciates all community involvement. To contribute to the project, follow the [contribute guide](/CONTRIBUTING.md).
+To serve the app under a sub-path, set `BASE_PATH` when building, for example
+`BASE_PATH=/image-compressor npm run build`. `SITE_ORIGIN` sets the address
+used in link previews.
 
-[squoosh]: https://squoosh.app
+The image codecs ship prebuilt in `codecs/`. Each codec folder has the build
+scripts used to compile it.
+
+The build writes `build/THIRD_PARTY_NOTICES.md`, listing every bundled
+package, font, codec and Rust crate with its licence. It is linked from the
+app's footer as "Licences".
+
+When the repository is public, every push to `main` is published to GitHub Pages.
+
+## Licence
+
+Apache License 2.0, see LICENSE and NOTICE. This is a modified version of
+Squoosh. Some codecs carry their own licences, including GPL-3.0 for the
+palette reduction codec; see THIRD_PARTY_NOTICES.md in the build.

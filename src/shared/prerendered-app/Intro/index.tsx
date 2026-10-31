@@ -152,7 +152,6 @@ export default class Intro extends Component<Props, State> {
     // If there's no deferred prompt, bail.
     if (!beforeInstallEvent) return;
 
-
     // Show the browser install prompt
     beforeInstallEvent.prompt();
 
@@ -205,13 +204,7 @@ export default class Intro extends Component<Props, State> {
             />
           )}
           <h1 class={style.logoContainer}>
-            <img
-              class={style.logo}
-              src={logo}
-              alt=""
-              width="64"
-              height="64"
-            />
+            <img class={style.logo} src={logo} alt="" width="64" height="64" />
             <span class={style.logoText}>Solvey Image Compressor</span>
           </h1>
           <div class={style.loadImg}>
@@ -322,8 +315,8 @@ export default class Intro extends Component<Props, State> {
                 <div class={style.infoTextWrapper}>
                   <h2 class={style.infoTitle}>Small</h2>
                   <p class={style.infoCaption}>
-                    Smaller images mean faster load times. It can reduce
-                    file size and maintain high quality.
+                    Smaller images mean faster load times. It can reduce file
+                    size and maintain high quality.
                   </p>
                 </div>
                 <div class={style.infoImgWrapper}>

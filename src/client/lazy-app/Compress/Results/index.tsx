@@ -44,7 +44,6 @@ export default class Results extends Component<Props, State> {
     }
   }
 
-
   render(
     { source, imageFile, downloadUrl, flipSide, typeLabel }: Props,
     { showLoadingState }: State,

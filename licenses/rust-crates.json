@@ -1,0 +1,694 @@
+[
+ {
+  "name": "adler32",
+  "version": "1.1.0",
+  "license": "Zlib",
+  "codecs": [
+   "png"
+  ]
+ },
+ {
+  "name": "autocfg",
+  "version": "1.0.1",
+  "license": "Apache-2.0 OR MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "bitflags",
+  "version": "1.2.1",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "png"
+  ]
+ },
+ {
+  "name": "bitvec",
+  "version": "1.0.1",
+  "license": "MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "bumpalo",
+  "version": "3.4.0",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "oxipng",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "bytemuck",
+  "version": "1.14.0",
+  "license": "Zlib OR Apache-2.0 OR MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "bytemuck",
+  "version": "1.4.1",
+  "license": "Zlib OR Apache-2.0 OR MIT",
+  "codecs": [
+   "resize"
+  ]
+ },
+ {
+  "name": "bytemuck",
+  "version": "1.5.1",
+  "license": "Zlib OR Apache-2.0 OR MIT",
+  "codecs": [
+   "png"
+  ]
+ },
+ {
+  "name": "byteorder",
+  "version": "1.3.4",
+  "license": "Unlicense OR MIT",
+  "codecs": [
+   "png"
+  ]
+ },
+ {
+  "name": "cc",
+  "version": "1.0.66",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "cfg-if",
+  "version": "0.1.10",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "cfg-if",
+  "version": "1.0.0",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "oxipng",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "console_error_panic_hook",
+  "version": "0.1.6",
+  "license": "Apache-2.0/MIT",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "crc32fast",
+  "version": "1.2.0",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "png"
+  ]
+ },
+ {
+  "name": "crossbeam-channel",
+  "version": "0.5.10",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "crossbeam-deque",
+  "version": "0.8.4",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "crossbeam-epoch",
+  "version": "0.9.17",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "crossbeam-utils",
+  "version": "0.8.18",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "deflate",
+  "version": "0.8.6",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "png"
+  ]
+ },
+ {
+  "name": "either",
+  "version": "1.6.1",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "equivalent",
+  "version": "1.0.1",
+  "license": "Apache-2.0 OR MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "funty",
+  "version": "2.0.0",
+  "license": "MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "futures",
+  "version": "0.1.29",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "hashbrown",
+  "version": "0.14.3",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "hqx",
+  "version": "0.1.0",
+  "license": "LGPL-2.1-or-later",
+  "codecs": [
+   "hqx"
+  ]
+ },
+ {
+  "name": "indexmap",
+  "version": "2.1.0",
+  "license": "Apache-2.0 OR MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "js-sys",
+  "version": "0.3.41",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "resize"
+  ]
+ },
+ {
+  "name": "js-sys",
+  "version": "0.3.42",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx"
+  ]
+ },
+ {
+  "name": "js-sys",
+  "version": "0.3.45",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "png"
+  ]
+ },
+ {
+  "name": "js-sys",
+  "version": "0.3.48",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "lazy_static",
+  "version": "1.4.0",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "oxipng",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "libc",
+  "version": "0.2.72",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "resize"
+  ]
+ },
+ {
+  "name": "libc",
+  "version": "0.2.73",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "hqx"
+  ]
+ },
+ {
+  "name": "libdeflate-sys",
+  "version": "1.19.0",
+  "license": "Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "libdeflater",
+  "version": "1.19.0",
+  "license": "Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "log",
+  "version": "0.4.11",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "hqx"
+  ]
+ },
+ {
+  "name": "log",
+  "version": "0.4.20",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "log",
+  "version": "0.4.8",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "memory_units",
+  "version": "0.4.0",
+  "license": "MPL-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "miniz_oxide",
+  "version": "0.3.7",
+  "license": "MIT",
+  "codecs": [
+   "png"
+  ]
+ },
+ {
+  "name": "oxipng",
+  "version": "9.0.0",
+  "license": "MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "png",
+  "version": "0.16.7",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "png"
+  ]
+ },
+ {
+  "name": "proc-macro2",
+  "version": "0.4.30",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "proc-macro2",
+  "version": "1.0.26",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "proc-macro2",
+  "version": "1.0.27",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "hqx",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "quote",
+  "version": "0.6.13",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "quote",
+  "version": "1.0.7",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "hqx",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "quote",
+  "version": "1.0.8",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "radium",
+  "version": "0.7.0",
+  "license": "MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "rayon",
+  "version": "1.8.0",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "rayon-core",
+  "version": "1.12.0",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "resize",
+  "version": "0.5.5",
+  "license": "MIT",
+  "codecs": [
+   "resize"
+  ]
+ },
+ {
+  "name": "rgb",
+  "version": "0.8.25",
+  "license": "MIT",
+  "codecs": [
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "rgb",
+  "version": "0.8.37",
+  "license": "MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "rustc-hash",
+  "version": "1.1.0",
+  "license": "Apache-2.0/MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "rustc_version",
+  "version": "0.4.0",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "scoped-tls",
+  "version": "1.0.0",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "semver",
+  "version": "1.0.21",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "spmc",
+  "version": "0.3.0",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "syn",
+  "version": "1.0.72",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "hqx",
+   "oxipng",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "tap",
+  "version": "1.0.1",
+  "license": "MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "unicode-xid",
+  "version": "0.1.0",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "unicode-xid",
+  "version": "0.2.1",
+  "license": "MIT OR Apache-2.0",
+  "codecs": [
+   "hqx",
+   "oxipng",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "wasm-bindgen",
+  "version": "0.2.74",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "oxipng",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "wasm-bindgen-backend",
+  "version": "0.2.74",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "oxipng",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "wasm-bindgen-futures",
+  "version": "0.3.27",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "wasm-bindgen-macro",
+  "version": "0.2.74",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "oxipng",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "wasm-bindgen-macro-support",
+  "version": "0.2.74",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "oxipng",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "wasm-bindgen-rayon",
+  "version": "1.0.1",
+  "license": "Apache-2.0",
+  "codecs": [
+   "oxipng"
+  ]
+ },
+ {
+  "name": "wasm-bindgen-shared",
+  "version": "0.2.74",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "oxipng",
+   "png",
+   "resize"
+  ]
+ },
+ {
+  "name": "wasm-bindgen-test",
+  "version": "0.2.50",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "wasm-bindgen-test-macro",
+  "version": "0.2.50",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "web-sys",
+  "version": "0.3.41",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "resize"
+  ]
+ },
+ {
+  "name": "web-sys",
+  "version": "0.3.42",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx"
+  ]
+ },
+ {
+  "name": "web-sys",
+  "version": "0.3.45",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "png"
+  ]
+ },
+ {
+  "name": "wee_alloc",
+  "version": "0.4.5",
+  "license": "MPL-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "winapi",
+  "version": "0.3.9",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "winapi-i686-pc-windows-gnu",
+  "version": "0.4.0",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "winapi-x86_64-pc-windows-gnu",
+  "version": "0.4.0",
+  "license": "MIT/Apache-2.0",
+  "codecs": [
+   "hqx",
+   "resize"
+  ]
+ },
+ {
+  "name": "wyz",
+  "version": "0.5.1",
+  "license": "MIT",
+  "codecs": [
+   "oxipng"
+  ]
+ }
+]
